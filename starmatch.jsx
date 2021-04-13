@@ -1,3 +1,5 @@
+// STAR MATCH - V7
+
 const StarsDisplay = props => (
   <>
     {utils.range(1, props.count).map(starId => (
@@ -28,7 +30,7 @@ const PlayAgain = props => (
   </div>
 );
 
-const StarMatch = () => {
+const Game = (props) => {
   const [stars, setStars] = useState(utils.random(1, 9));
   const [availableNums, setAvailableNums] = useState(utils.range(1, 9));
   const [candidateNums, setCandidateNums] = useState([]);
@@ -96,7 +98,7 @@ const StarMatch = () => {
       <div className="body">
         <div className="left">
           {gameStatus !== 'active' ? (
-            <PlayAgain onClick={resetGame} gameStatus={gameStatus} />
+            <PlayAgain onClick={props.startNewGame} gameStatus={gameStatus} />
           ) : (
             <StarsDisplay count={stars} />
           )}
@@ -116,6 +118,11 @@ const StarMatch = () => {
     </div>
   );
 };
+
+const StarMatch = () => {
+  const [gameId, setGameId] = useState(1);
+  return <Game key={gameId} startNewGame= {() => setGameId(gameId + 1)} />;
+}
 
 // Color Theme
 const colors = {
