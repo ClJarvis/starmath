@@ -1,4 +1,4 @@
-// STAR MATCH - V7
+// compelted chapter, but broswer crashed. copied exercise files to get current.
 
 const StarsDisplay = props => (
   <>
